@@ -9,6 +9,6 @@ public class Gesture extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gesture);
-        //kome
+        //kom
     }
 }
