@@ -32,8 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="面接官が「これで面接を終わります。」などの面接終了の合図をしたら、座ったまま\n「本日はお忙しい中、お時間をいただき誠にありがとうございました。」とお礼を述べます。\n
-その後、座ったまま一礼します。"
+                android:text="@string/mensetu9"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <ImageView
@@ -49,9 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="イスの横に立って「失礼いたします。」と言い、その後一礼（45度）します。\n
-
-一礼が済んだら、ドア付近まで姿勢よく歩きます。（面接官と目を合わせ続ける必要はありません。）"
+                android:text="@string/mensetu10"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
@@ -69,10 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="面接官の方に向き直り、再度「失礼いたします。」と言い、その後一礼（45度）します。\n
-
-一礼が済んだら、ドアを開け、面接室の外に出ます。 \nドアを閉める前に、面接官の方に向き直り、しっかりとアイコンタクトを取ります。\n
- ドアを閉める際は音が鳴らないように注意しましょう。"
+            android:text="@string/mensetu11"
             android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
     </ScrollView></RelativeLayout>

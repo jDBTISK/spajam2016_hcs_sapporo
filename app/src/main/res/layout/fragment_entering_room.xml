@@ -33,8 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="ドアを2回軽くノックします。\n「どうぞ。お入り下さい。」という声が聞こえたら、ドアを開けます。
-                \n応答がない場合は再度ノックをし、それでも応答がない場合は「失礼いたします。」と言ってからドアを開けます。"
+                android:text="@string/mensetu1"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <ImageView
@@ -51,14 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="ドアを少し開け、面接官の目を見て「失礼いたします。」と大きな声で挨拶します。\n
-                （複数面接官がいる場合は、中央に座っている人の目を見て下さい。）
-                \n挨拶は「失礼します。」でも良いですが、「失礼しまーす。」と「ま」の音が伸びてしまうと印象が悪いので注意して下さい。
-                 \n（基本的には「失礼いたします」を推奨。）\n
-                 ドアは片手で開けます。\n（面接時は鞄を持っていることが多いため、両手で開けるのは不可能です。）
-身体が正面を向くように、右開きのドアなら右手で、左開きのドアならば左でドアを開けます。\n
-左の図では、受験者から見て右開きのドアなので右手でドアを開けることで、自然と身体が正面に向くようにしています。\n
-面接官の方に完全な背面を見せないよう、斜めの立ち位置でドアを閉めます。 \nドアを閉める音が鳴らないように注意しましょう。"
+                android:text="@string/mensetu2"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
@@ -76,9 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="面接官の方に向き直り、一礼します。「\nよろしくお願いいたします！」と挨拶してから一礼しても良いです。\n
-                姿勢の良く歩きます。（面接官と目を合わせ続ける必要はありません。）\n
-                 他の人から猫背を指摘される方は要注意。自分では正しい姿勢が分かりづらいですから、友達などにアドバイスを求めましょう。"
+                android:text="@string/mensetu3"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
             <ImageView
                 android:id="@+id/imageView5"
@@ -93,12 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="イスの横（入ってきたドアに近い側）に立ちます。\n 男性は手を身体の横にまっすぐ伸ばし、女性は身体の前に両手を重ねます。（左手よりも右手が前になるように重ねて下さい。）\n
-                「大学名とお名前をお願いします。」と言われたら、 面接官の目を見て「○○大学○○学部○○学科の○○　○○と申します。\n
-                本日はよろしくお願いいたします。」と言い、 その後一礼（45度）します。\n
-                （自己紹介と一礼を同時に行わないように注意して下さい。）\n
-                「どうぞ、お掛け下さい。」と言われますから、「失礼いたします。」と言い、 その後一礼（15度）し\n
-                （このときも、「失礼いたします。」と一礼を同時に行わないように注意して下さい。）着席します。"
+                android:text="@string/mensetu4"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
             <ImageView
                 android:id="@+id/imageView6"
@@ -114,8 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="座るときは深く腰をかけ過ぎないように注意します。（イスに半分ほど腰をかける程度が良いでしょう。）\n
-男性は手を軽く握り、ひざの上に置きます。女性は両手を重ね、ひざの中央に置きます。"
+                android:text="@string/mensetu6"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
     </ScrollView>
