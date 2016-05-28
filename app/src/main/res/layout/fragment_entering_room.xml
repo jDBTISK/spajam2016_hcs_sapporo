@@ -32,7 +32,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="ドアを2回軽くノックします。\n「どうぞ。お入り下さい。」という声が聞こえたら、ドアを開けます。\n応答がない場合は再度ノックをし、それでも応答がない場合は「失礼いたします。」と言ってからドアを開けます。"
+                android:text="ドアを2回軽くノックします。\n「どうぞ。お入り下さい。」という声が聞こえたら、ドアを開けます。
+                \n応答がない場合は再度ノックをし、それでも応答がない場合は「失礼いたします。」と言ってからドアを開けます。"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <ImageView
@@ -48,27 +49,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="ドアを少し開け、面接官の目を見て「失礼いたします。」と大きな声で挨拶します。\n（複数面接官がいる場合は、中央に座っている人の目を見て下さい。）\n挨拶は「失礼します。」でも良いですが、「失礼しまーす。」と「ま」の音が伸びてしまうと印象が悪いので注意して下さい。 \n（基本的には「失礼いたします」を推奨。）"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/mensetu" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="ドアは片手で開けます。\n（面接時は鞄を持っていることが多いため、両手で開けるのは不可能です。）
+                android:text="ドアを少し開け、面接官の目を見て「失礼いたします。」と大きな声で挨拶します。\n
+                （複数面接官がいる場合は、中央に座っている人の目を見て下さい。）
+                \n挨拶は「失礼します。」でも良いですが、「失礼しまーす。」と「ま」の音が伸びてしまうと印象が悪いので注意して下さい。
+                 \n（基本的には「失礼いたします」を推奨。）\n
+                 ドアは片手で開けます。\n（面接時は鞄を持っていることが多いため、両手で開けるのは不可能です。）
 身体が正面を向くように、右開きのドアなら右手で、左開きのドアならば左でドアを開けます。\n
 左の図では、受験者から見て右開きのドアなので右手でドアを開けることで、自然と身体が正面に向くようにしています。\n
 面接官の方に完全な背面を見せないよう、斜めの立ち位置でドアを閉めます。 \nドアを閉める音が鳴らないように注意しましょう。"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="wrap_content"
