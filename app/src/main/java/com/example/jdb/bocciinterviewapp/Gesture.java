@@ -9,7 +9,7 @@ public class Gesture extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_gesture);
         initTabs();
     }
     protected void initTabs() {
