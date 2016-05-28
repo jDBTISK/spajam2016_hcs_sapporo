@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     tools:context="com.example.jdb.bocciinterviewapp.leaving">
 
 
@@ -16,34 +15,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/mensetu" />
+                android:src="@drawable/mensetu6" />
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="面接官が「これで面接を終わります。」などの面接終了の合図をしたら、座ったまま\n
-                「本日はお忙しい中、お時間をいただき誠にありがとうございました。」とお礼を述べます。\n
+                android:text="面接官が「これで面接を終わります。」などの面接終了の合図をしたら、座ったまま\n「本日はお忙しい中、お時間をいただき誠にありがとうございました。」とお礼を述べます。\n
 その後、座ったまま一礼します。"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <ImageView
                 android:id="@+id/imageView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/mensetu" />
+                android:src="@drawable/mensetu5" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -58,11 +53,11 @@
 
         <ImageView
             android:id="@+id/imageView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/mensetu" />
+            android:src="@drawable/mensetu7"
+            android:nestedScrollingEnabled="false" />
 
         <TextView
             android:id="@+id/textView9"
