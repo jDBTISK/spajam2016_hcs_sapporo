@@ -2,15 +2,15 @@ package com.example.jdb.bocciinterviewapp;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -42,10 +42,9 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         questionList.setAdapter(adapter);
         questionList.setOnItemClickListener(this);
         questionList.setOnItemLongClickListener(this);
-        registerForContextMenu(questionList);
     }
 
-    public void addQuestionItem() {
+    public void addQuestionItem(View v) {
 
     }
 
@@ -116,11 +115,15 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View v, int pos, long id) {
         currentPosition = pos;
+        alertCheck(questionArray.get(pos));
         return false;
     }
 
     @Override
     public void onInit(int status) {
+        System.out.println(status);
+        System.out.println(TextToSpeech.SUCCESS);
+        System.out.println(TextToSpeech.ERROR);
         if (TextToSpeech.SUCCESS == status) {
             Log.d(TAG, "初期化");
         } else {
@@ -195,27 +198,47 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         }
     }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
-        super.onCreateContextMenu(menu,v,menuInfo);
-        if(v.getId()==R.id.questionList){
-            getMenuInflater().inflate( R.menu.question_context, menu );
-        }
+    private void alertCheck(String item){
+        String[] menu={"編集","削除"};
+        AlertDialog.Builder alert=new AlertDialog.Builder(this);
+        alert.setItems(menu,new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog,int idx){
+                if(idx==0){
+                    //TODO 編集
+                }else if(idx==1){
+                    deleteCheck();
+                }
+            }
+        });
+        alert.show();
     }
 
-    @Override
-    public boolean onContextItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case R.id.questionDelete:
-                questionArray.remove(currentPosition);
-                //TODO removeした後の中身の移動とかは？currentPositionも直す？
-                break;
-            case R.id.questionEdit:
+    private void deleteCheck(){
+        AlertDialog.Builder alertDialogBuilder=new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("削除");
+        alertDialogBuilder.setMessage("本当に削除しますか？");
+        alertDialogBuilder.setNeutralButton("いいえ",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                break;
-            default:
-                break;
-        }
-        return false;
+                    }
+                });
+        alertDialogBuilder.setPositiveButton("はい",
+                new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog,int which){
+                        deleteItem();
+                    }
+                });
+        alertDialogBuilder.setCancelable(true);
+        AlertDialog alertDialog=alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    private void deleteItem(){
+        questionArray.remove(currentPosition);
+        adapter.notifyDataSetChanged();
     }
 }
