@@ -3,6 +3,7 @@ package com.example.jdb.bocciinterviewapp;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -35,11 +36,13 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     private TextToSpeech tts;
     private final String TAG = "テキスト読み上げクラス　";
     private int currentPosition = -1;
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_list);
+        realm=Realm.getInstance(this);
         questionArray = new ArrayList<InterviewQuestion>();
         setQuestionArray();
         tts = new TextToSpeech(this, this);
@@ -106,7 +109,6 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
 
     private void setQuestionArray() {
         //TODO データベースから質問引っ張ってきて
-        Realm realm=Realm.getInstance(this);
         RealmQuery<InterviewQuestion> query=realm.where(InterviewQuestion.class);
         RealmResults<InterviewQuestion> rs=query.findAll();
         for(int i=0; i<rs.size(); i++){
@@ -229,12 +231,20 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
             public void onClick(DialogInterface dialog,int idx){
                 if(idx==0){
                     //TODO 編集
+                    startEditActivity();
                 }else if(idx==1){
                     deleteCheck();
                 }
             }
         });
         alert.show();
+    }
+
+    private void startEditActivity(){
+        int id=questionArray.get(currentPosition).getId();
+        RealmResults<InterviewQuestion> rs=realm.where(InterviewQuestion.class).equalTo("id",id).findAll();
+        Intent intent=new Intent(this,QuestionEditActivity.class);
+        intent.putExtra("q",rs.first());
     }
 
     private void deleteCheck(){
@@ -261,7 +271,6 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     }
 
     private void deleteItem(){
-        Realm realm=Realm.getInstance(this);
         int id=questionArray.get(currentPosition).getId();
         RealmResults<InterviewQuestion> rs=realm.where(InterviewQuestion.class).equalTo("id",id).findAll();
         realm.beginTransaction();

@@ -10,6 +10,5 @@ public class QuestionEditActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_edit);
 
-
     }
 }
