@@ -21,7 +21,7 @@ public class MediaManipulation {
         if(dir.exists() == false) dir.mkdir();  //保存ディレクトリがない場合作成
     }
 
-    public void recordingStart(String number) {
+    public void recordingStart(int number) {
         filePath = "bocci" + number + ".3gp";
         file = new File(dir, filePath);
 
@@ -55,7 +55,7 @@ public class MediaManipulation {
         mediaPlayer.release();
     }
 
-    public void playStart(String number) {
+    public void playStart(int number) {
         filePath = "bocci" + number + ".3gp";
         file = new File(dir, filePath);
 
