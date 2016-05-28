@@ -53,7 +53,7 @@ public class PlayListOperation {
         RealmResults<PlayList> results = realm.where(PlayList.class).equalTo("id", id).findAll();
         InterviewQuestion interviewQuestion = null;
         if(results.size() > 0) {
-            interviewQuestion = results.get(0).getInterviewQuestions();
+            interviewQuestion = results.get(0).getInterviewQuestion();
         }
 
         return interviewQuestion;
