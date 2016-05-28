@@ -147,8 +147,6 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     @Override
     public void onInit(int status) {
         System.out.println(status);
-        System.out.println(TextToSpeech.SUCCESS);
-        System.out.println(TextToSpeech.ERROR);
         if (TextToSpeech.SUCCESS == status) {
             Log.d(TAG, "初期化");
         } else {
@@ -245,6 +243,7 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         RealmResults<InterviewQuestion> rs=realm.where(InterviewQuestion.class).equalTo("id",id).findAll();
         Intent intent=new Intent(this,QuestionEditActivity.class);
         intent.putExtra("q",rs.first());
+        startActivity(intent);
     }
 
     private void deleteCheck(){
