@@ -18,5 +18,12 @@
     <string name="mensetu8">\n返答するときは、明るく少し大きめの声で話します。\n髪をいじったり、貧乏ゆすりしたりするなど、癖が出ないように気をつけます。\n面接中メモは取らない。</string>
     <string name="mensetu9">面接官が「これで面接を終わります。」などの面接終了の合図をしたら、座ったまま「本日はお忙しい中、お時間をいただき誠にありがとうございました。」とお礼を述べます。\nその後、座ったまま一礼します。</string>
     <string name="mensetu10">イスの横に立って「失礼いたします。」と言い、その後一礼（45度）します。\n一礼が済んだら、ドア付近まで姿勢よく歩きます。（面接官と目を合わせ続ける必要はありません。）</string>
-    <string name="mensetu11" >面接官の方に向き直り、再度「失礼いたします。」と言い、その後一礼（45度）します。\n一礼が済んだら、ドアを開け、面接室の外に出ます。\nドアを閉める前に、面接官の方に向き直り、しっかりとアイコンタクトを取ります。\nドアを閉める際は音が鳴らないように注意しましょう。</string>
+    <string name="mensetu11">面接官の方に向き直り、再度「失礼いたします。」と言い、その後一礼（45度）します。\n一礼が済んだら、ドアを開け、面接室の外に出ます。\nドアを閉める前に、面接官の方に向き直り、しっかりとアイコンタクトを取ります。\nドアを閉める際は音が鳴らないように注意しましょう。</string>
+    <string name="writehint">読み上げデータ入力</string>
+    <string name="Onsei">音声入力</string>
+    <string name="cansel">取消</string>
+    <string name="clear">クリア</string>
+    <string name="writetitle">文字入力してね</string>
+    <string name="textsave">保存</string>
+    <string name="textlisten">聴く</string>
 </resources>
