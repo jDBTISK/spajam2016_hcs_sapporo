@@ -54,7 +54,8 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     }
 
     public void addQuestionItem(View v) {
-
+        Intent intent=new Intent(this,QuestionEditActivity.class);
+        startActivity(intent);
     }
 
     private class ViewHolder {
