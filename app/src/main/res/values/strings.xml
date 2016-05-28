@@ -3,4 +3,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">ぼっち面接</string>
+    <string name="interview_question">面接練習</string>
+    <string name="gesture">所作確認</string>
+    <string name="interviewquestion">質問と回答</string>
+    <string name="history">履歴</string>
 </resources>
