@@ -75,4 +75,10 @@ public class MediaManipulation {
         mediaPlayer.reset();
     }
 
+    public void playPause() {
+        if(mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+        }
+    }
+
 }
