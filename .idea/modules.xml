@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BocciInterviewApp.iml" filepath="$PROJECT_DIR$/BocciInterviewApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spajam2016_hcs_sapporo.iml" filepath="$PROJECT_DIR$/spajam2016_hcs_sapporo.iml" />
       <module fileurl="file://$PROJECT_DIR$/spajam2016_hcs_sapporo.iml" filepath="$PROJECT_DIR$/spajam2016_hcs_sapporo.iml" />
     </modules>
   </component>
