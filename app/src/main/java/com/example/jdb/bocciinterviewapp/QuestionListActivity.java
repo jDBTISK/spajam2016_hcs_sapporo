@@ -13,6 +13,6 @@ public class QuestionListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_list);
         ListView questionList=(ListView)findViewById(R.id.questionList);
-
+        //とりあえず
     }
 }
