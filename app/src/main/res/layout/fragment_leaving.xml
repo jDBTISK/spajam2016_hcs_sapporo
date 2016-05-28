@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context="com.example.jdb.bocciinterviewapp.leaving">
 
 
@@ -15,13 +16,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/mensetu6" />
 
             <TextView
@@ -38,6 +41,7 @@
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/mensetu5" />
 
             <TextView
@@ -56,6 +60,7 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
             android:src="@drawable/mensetu7"
             android:nestedScrollingEnabled="false" />
 
