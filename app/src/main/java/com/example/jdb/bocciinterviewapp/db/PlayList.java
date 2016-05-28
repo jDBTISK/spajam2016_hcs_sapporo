@@ -28,7 +28,7 @@ public class PlayList extends RealmObject {
         this.name = name;
     }
 
-    public InterviewQuestion getInterviewQuestions() {
+    public InterviewQuestion getInterviewQuestion() {
         return interviewQuestion;
     }
 
