@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/mensetu" />
+                android:src="@drawable/mensetu6" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/mensetu" />
+            android:src="@drawable/mensetu7" />
 
         <TextView
             android:id="@+id/textView9"
