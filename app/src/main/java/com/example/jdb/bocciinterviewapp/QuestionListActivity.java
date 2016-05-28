@@ -18,13 +18,19 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.jdb.bocciinterviewapp.db.InterviewQuestion;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
+
 public class QuestionListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener,TextToSpeech.OnInitListener {
 
-    private ArrayList<String> questionArray;
+    private ArrayList<InterviewQuestion> questionArray;
     private BaseAdapter adapter;
     private TextToSpeech tts;
     private final String TAG = "テキスト読み上げクラス　";
@@ -34,7 +40,7 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_list);
-        questionArray = new ArrayList<String>();
+        questionArray = new ArrayList<InterviewQuestion>();
         setQuestionArray();
         tts = new TextToSpeech(this, this);
         ListView questionList = (ListView) findViewById(R.id.questionList);
@@ -57,7 +63,7 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         private LayoutInflater inflater;
         private int itemLayoutId;
 
-        ListViewAdapter(Context context, int itemLayoutId, List<String> questionArray) {
+        ListViewAdapter(Context context, int itemLayoutId, List<InterviewQuestion> questionArray) {
             super();
             this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             this.itemLayoutId = itemLayoutId;
@@ -77,7 +83,7 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
             } else {
                 holder = (ViewHolder) convertView.getTag(); //holderを使って再利用
             }
-            holder.questionTextView.setText(questionArray.get(pos));
+            holder.questionTextView.setText(questionArray.get(pos).getQuestion());
 
             return convertView;
         }
@@ -100,22 +106,39 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
 
     private void setQuestionArray() {
         //TODO データベースから質問引っ張ってきて
-        questionArray.add("まず、自己紹介をしてください。");
-        questionArray.add("では、あなたが当社を志望した理由を教えて下さい。");
-        questionArray.add("では、あなたの長所を教えて下さい。");
+        Realm realm=Realm.getInstance(this);
+        RealmQuery<InterviewQuestion> query=realm.where(InterviewQuestion.class);
+        RealmResults<InterviewQuestion> rs=query.findAll();
+        for(int i=0; i<rs.size(); i++){
+            InterviewQuestion q=rs.get(i);
+        }
+        //TODO ↑あってるかな？
+
+        InterviewQuestion q1=new InterviewQuestion();
+        q1.setId(1);
+        q1.setQuestion("まず、自己紹介をしてください。");
+        questionArray.add(q1);
+        InterviewQuestion q2=new InterviewQuestion();
+        q1.setId(2);
+        q1.setQuestion("では、あなたが弊社を志望した理由を教えて下さい。");
+        questionArray.add(q2);
+        InterviewQuestion q3=new InterviewQuestion();
+        q1.setId(3);
+        q1.setQuestion("では、あなたの長所を教えて下さい。");
+        questionArray.add(q3);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
         //TODO 再生
-        speechText(questionArray.get(pos));
+        speechText(questionArray.get(pos).getQuestion());
     }
 
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View v, int pos, long id) {
         currentPosition = pos;
-        alertCheck(questionArray.get(pos));
+        alertCheck(questionArray.get(pos).getQuestion());
         return false;
     }
 
@@ -238,6 +261,12 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     }
 
     private void deleteItem(){
+        Realm realm=Realm.getInstance(this);
+        int id=questionArray.get(currentPosition).getId();
+        RealmResults<InterviewQuestion> rs=realm.where(InterviewQuestion.class).equalTo("id",id).findAll();
+        realm.beginTransaction();
+        rs.remove(0);
+        realm.commitTransaction();
         questionArray.remove(currentPosition);
         adapter.notifyDataSetChanged();
     }
