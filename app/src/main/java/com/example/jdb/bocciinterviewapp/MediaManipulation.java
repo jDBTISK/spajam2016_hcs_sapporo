@@ -71,8 +71,10 @@ public class MediaManipulation {
     }
 
     public void playStop() {
-        mediaPlayer.stop();
-        mediaPlayer.reset();
+        if(mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+            mediaPlayer.reset();
+        }
     }
 
     public void playPause() {
