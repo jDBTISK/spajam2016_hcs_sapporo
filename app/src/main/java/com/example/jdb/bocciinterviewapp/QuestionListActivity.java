@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -41,8 +40,6 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     }
 
     private class ViewHolder{
-        Button delButton;
-        Button editButton;
         TextView questionTextView;
         View view;
     }
@@ -65,8 +62,6 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
                 convertView=inflater.inflate(itemLayoutId,parent,false); //activity_mainの<ListView>にlist_itemsをinflateしてconvertVとする
                 //ViewHolderを生成
                 holder=new ViewHolder();
-                holder.delButton=(Button) convertView.findViewById(R.id.delButton);
-                holder.editButton=(Button) convertView.findViewById(R.id.editButton);
                 holder.questionTextView=(TextView) convertView.findViewById(R.id.questionText);
                 holder.view=(View)convertView.findViewById(R.id.questionItem);
                 convertView.setTag(holder);
@@ -104,6 +99,7 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     @Override
     public void onItemClick(AdapterView<?> parent,View v,int pos,long id){
         //TODO 再生
+        System.out.println(questionArray.get(pos));
         speechText(questionArray.get(pos));
     }
 
