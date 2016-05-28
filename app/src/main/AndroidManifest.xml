@@ -21,7 +21,8 @@
         <activity android:name=".Gesture" />
         <activity android:name=".Question_and_answer" />
         <activity android:name=".QuestionListActivity" />
-        <activity android:name=".TextRegistration"></activity>
+        <activity android:name=".TextRegistration" />
+        <activity android:name=".Recording"></activity>
     </application>
 
 </manifest>
