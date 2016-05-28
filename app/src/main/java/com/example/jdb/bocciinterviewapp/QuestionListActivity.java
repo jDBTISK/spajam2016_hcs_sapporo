@@ -97,7 +97,7 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     private void setQuestionArray(){
         //TODO データベースから質問引っ張ってきて
         questionArray.add("まず、自己紹介をしてください。");
-        questionArray.add("では、あなたが当社を志望した理由を教えて下さい。s");
+        questionArray.add("では、あなたが当社を志望した理由を教えて下さい。");
         questionArray.add("では、あなたの長所を教えて下さい。");
     }
 
