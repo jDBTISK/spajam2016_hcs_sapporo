@@ -19,7 +19,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".Gesture" />
-        <activity android:name=".QuestionListActivity"></activity>
+        <activity android:name=".Question_and_answer"/>
+        <activity android:name=".QuestionListActivity"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
