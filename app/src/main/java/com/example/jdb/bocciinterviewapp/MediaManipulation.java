@@ -6,6 +6,8 @@ import android.os.Environment;
 
 import java.io.File;
 
+// インスタンス生成
+// recording
 public class MediaManipulation {
 
     private MediaPlayer mediaPlayer;
@@ -21,7 +23,7 @@ public class MediaManipulation {
         if(dir.exists() == false) dir.mkdir();  //保存ディレクトリがない場合作成
     }
 
-    public void recodingStart(String number) {
+    public void recordingStart(String number) {
         filePath = "bocci" + number + ".3gp";
         file = new File(dir, filePath);
 
@@ -41,7 +43,7 @@ public class MediaManipulation {
         mediaRecorder.start();
     }
 
-    public void recodingStop() {
+    public void recordingStop() {
         try {
             mediaRecorder.stop();
             mediaRecorder.reset();
