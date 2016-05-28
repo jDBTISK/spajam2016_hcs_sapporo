@@ -6,8 +6,6 @@ import android.os.Environment;
 
 import java.io.File;
 
-// インスタンス生成
-// recording
 public class MediaManipulation {
 
     private MediaPlayer mediaPlayer;
