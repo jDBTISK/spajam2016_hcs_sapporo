@@ -32,6 +32,7 @@ public class PlayList2 extends Activity {
 
         list2.add(0,"あなたを家電製品に例えると何ですか？その理由は？");
         list2.add(1,"ザリガニとエビの違いを１０個あげて下さい");
+
         lv = (ListView) findViewById(R.id.listView2);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, nameList);
 
@@ -43,7 +44,6 @@ public class PlayList2 extends Activity {
                 String item = (String) listView.getItemAtPosition(position);
                 interview=sentaku(item);
                 Intent intent=new Intent(getApplicationContext(),Recording.class);
-                intent.putExtra("pass",item);
                 intent.putStringArrayListExtra("situmon",interview);
                 startActivity(intent);
             }

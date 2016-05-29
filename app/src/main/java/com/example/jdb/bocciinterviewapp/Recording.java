@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -28,27 +28,23 @@ public class Recording extends Activity implements View.OnClickListener {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-    boolean flug=true;
-    TextView textView;
-    int i=0;
+    ImageView img;
+
+    boolean flug = true;
     ArrayList<String> list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recording);
 
         recordingStart = (Button) findViewById(R.id.recordingstart);
-        recordingStop = (Button) findViewById(R.id.recordingstop);
-        Intent intent=getIntent();
 
-        list=intent.getStringArrayListExtra("situmon");
-        textView=(TextView)findViewById(R.id.textView11);
+        Intent intent = getIntent();
 
-        textView.setText(list.get(i));
-        i++;
 
-        recordingStart.setOnClickListener(this);
-        recordingStop.setOnClickListener(this);
+        img =(ImageView)findViewById(R.id.imageView3);
+                recordingStart.setOnClickListener(this);
 
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -63,13 +59,14 @@ public class Recording extends Activity implements View.OnClickListener {
 
                 if (flug) {
                     mm.recordingStart();
-
+                    img.setImageResource(R.drawable.mic_on);
 
                     recordingStart.setText("停止");
                     recordingStart.setTextColor(Color.WHITE);
                     Log.i("RECORDING", "START");
-                    flug=false;
-                }else {
+                    flug = false;
+                } else {
+                    img.setImageResource(R.drawable.mic_off);
                     mm.recordingStop();
                     recordingStart.setText("録音");
                     recordingStart.setTextColor(Color.RED);
@@ -82,8 +79,8 @@ public class Recording extends Activity implements View.OnClickListener {
                             .setView(editView)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
-                                    rename=editView.getText().toString();
-                                    File newfile=new File(Environment.getExternalStorageDirectory(),"BocciMedia/"+rename+".3gp");
+                                    rename = editView.getText().toString();
+                                    File newfile = new File(Environment.getExternalStorageDirectory(), "BocciMedia/" + rename + ".3gp");
                                     File file = new File(Environment.getExternalStorageDirectory(), "BocciMedia/bocci.3gp");
                                     if (file.exists()) {
                                         //ファイル名変更実行
@@ -101,20 +98,10 @@ public class Recording extends Activity implements View.OnClickListener {
                                 }
                             })
                             .show();
-                    flug=true;
+                    flug = true;
+
 
                 }
-                break;
-            case R.id.recordingstop:
-                String test=list.get(i);
-                if (test==null){
-                    textView.setText("終了です");
-                    recordingStop.isEnabled();
-                }else {
-                    textView.setText(test);
-                }
-
-
 
                 break;
 
@@ -122,6 +109,7 @@ public class Recording extends Activity implements View.OnClickListener {
             default:
                 break;
         }
+
     }
 
     @Override

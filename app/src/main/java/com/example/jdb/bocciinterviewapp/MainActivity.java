@@ -6,8 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.jdb.bocciinterviewapp.db.*;
-import com.example.jdb.bocciinterviewapp.db.PlayList;
+import com.example.jdb.bocciinterviewapp.db.InterviewQuestion;
 
 import io.realm.Realm;
 import io.realm.RealmQuery;
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (v.getId()) {
             case R.id.button:
-                intent = new Intent(this,PlayList2.class);
+                intent = new Intent(this,Recording.class);
                 startActivity(intent);
                 break;
             case R.id.button2:
