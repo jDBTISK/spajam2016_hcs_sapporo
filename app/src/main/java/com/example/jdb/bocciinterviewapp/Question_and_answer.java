@@ -18,9 +18,9 @@ public class Question_and_answer extends TabActivity{
         tab1.setContent(new Intent(this, QuestionListActivity.class));
         tabHost.addTab(tab1);
 
-        //TabHost.TabSpec tab2 = tabHost.newTabSpec("プレイリスト");
-        //tab2.setIndicator("tab2");
-        //tab2.setContent(new Intent(this, tab2Activity.class));
-        //tabHost.addTab(tab2);
+        TabHost.TabSpec tab2 = tabHost.newTabSpec("プレイリスト");
+        tab2.setIndicator("tab2");
+        tab2.setContent(new Intent(this, Voice_reproducing.class));
+        tabHost.addTab(tab2);
     }
 }
