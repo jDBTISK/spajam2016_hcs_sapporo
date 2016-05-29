@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
 
+//        RealmConfiguration realmConfig = new RealmConfiguration.Builder(this).build();
+//        Realm.deleteRealm(realmConfig);
+//        realm = Realm.getInstance(realmConfig);
         Realm realm=Realm.getInstance(this);
         RealmQuery<InterviewQuestion> query=realm.where(InterviewQuestion.class);
         RealmResults<InterviewQuestion> rs=query.findAll();
@@ -57,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (v.getId()) {
             case R.id.button:
-                intent = new Intent(this, Gesture.class);
+                intent = new Intent(this, Recording.class);
                 startActivity(intent);
                 break;
             case R.id.button2:
@@ -68,10 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, Question_and_answer.class );
                 startActivity(intent);
                 break;
-            case R.id.button4:
-                intent = new Intent(this, Gesture.class);
-                startActivity(intent);
-                break;
+
             default:
                 break;
         }

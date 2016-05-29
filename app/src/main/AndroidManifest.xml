@@ -19,7 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Recoding" />
         <activity android:name=".Gesture" />
         <activity android:name=".Question_and_answer" />
         <activity android:name=".QuestionListActivity" />

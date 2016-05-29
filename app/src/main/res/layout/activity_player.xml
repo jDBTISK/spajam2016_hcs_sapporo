@@ -9,19 +9,58 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.jdb.bocciinterviewapp.Player">
 
-    <Button
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout6">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="再生"
+            android:id="@+id/button5"
+            android:layout_centerVertical="true"
+            android:layout_alignRight="@+id/button6"
+            android:layout_alignEnd="@+id/button6"
+            android:layout_marginRight="29dp"
+            android:layout_marginEnd="29dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight=".5" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="停止"
+            android:id="@+id/button6"
+            android:layout_below="@+id/button5"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_vertical"
+            android:layout_weight=".5" />
+    </LinearLayout>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="再生"
-        android:id="@+id/button5"
-        android:layout_centerVertical="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textView3"
+        android:layout_marginBottom="31dp"
+        android:layout_above="@+id/linearLayout6"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="停止"
-        android:id="@+id/button6"
-        android:layout_below="@+id/button5"
-        android:layout_centerHorizontal="true" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:id="@+id/imageView10"
+        android:src="@drawable/abc_ic_go_search_api_mtrl_alpha"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/textView3" />
 </RelativeLayout>
