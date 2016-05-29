@@ -29,7 +29,7 @@ import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
-public class QuestionListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener,TextToSpeech.OnInitListener {
+public class QuestionListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,TextToSpeech.OnInitListener {
 
     private ArrayList<InterviewQuestion> questionArray;
     private BaseAdapter adapter;
@@ -54,7 +54,7 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         adapter = new ListViewAdapter(this, R.layout.question_item, questionArray);
         questionList.setAdapter(adapter);
         questionList.setOnItemClickListener(this);
-        questionList.setOnItemLongClickListener(this);
+        //questionList.setOnItemLongClickListener(this);
     }
 
     public void addQuestionItem(View v) {
@@ -113,41 +113,27 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     }
 
     private void setQuestionArray() {
-        //TODO データベースから質問引っ張ってきて
         RealmQuery<InterviewQuestion> query=realm.where(InterviewQuestion.class);
         RealmResults<InterviewQuestion> rs=query.findAll();
         for(int i=0; i<rs.size(); i++){
             InterviewQuestion q=rs.get(i);
             questionArray.add(q);
         }
-        //TODO ↑あってるかな？
-
-        /*InterviewQuestion q1=new InterviewQuestion();
-        q1.setId(1);
-        q1.setQuestion("まず、自己紹介をしてください。");
-        questionArray.add(q1);
-        InterviewQuestion q2=new InterviewQuestion();
-        q1.setId(2);
-        q1.setQuestion("では、あなたが弊社を志望した理由を教えて下さい。");
-        questionArray.add(q2);
-        InterviewQuestion q3=new InterviewQuestion();
-        q1.setId(3);
-        q1.setQuestion("では、あなたの長所を教えて下さい。");
-        questionArray.add(q3);*/
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
-        //TODO 再生
-        speechText(questionArray.get(pos).getQuestion());
+        //speechText(questionArray.get(pos).getQuestion());
+        currentPosition = pos;
+        alertCheck(questionArray.get(pos).getQuestion());
     }
 
-    @Override
+    /*@Override
     public boolean onItemLongClick(AdapterView<?> parent, View v, int pos, long id) {
         currentPosition = pos;
         alertCheck(questionArray.get(pos).getQuestion());
         return false;
-    }
+    }*/
 
     @Override
     public void onInit(int status) {
@@ -228,16 +214,17 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     }
 
     private void alertCheck(String item){
-        String[] menu={"編集","削除"};
+        String[] menu={"編集","削除","再生"};
         AlertDialog.Builder alert=new AlertDialog.Builder(this);
         alert.setItems(menu,new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog,int idx){
                 if(idx==0){
-                    //TODO 編集
                     startEditActivity();
                 }else if(idx==1){
                     deleteCheck();
+                }else if(idx==2){
+                    speechText(questionArray.get(currentPosition).getQuestion());
                 }
             }
         });
@@ -248,12 +235,12 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         int id=questionArray.get(currentPosition).getId();
         RealmResults<InterviewQuestion> rs=realm.where(InterviewQuestion.class).equalTo("id",id).findAll();
         Intent intent=new Intent(this,QuestionEditActivity.class);
-        System.out.println(rs.first().getId()+rs.first().getQuestion());
         InterviewQuestion q=rs.first();
         intent.putExtra("id",q.getId());
         intent.putExtra("question",q.getQuestion());
         intent.putExtra("answer",q.getAnswer());
         startActivity(intent);
+        finish();
     }
 
     private void deleteCheck(){

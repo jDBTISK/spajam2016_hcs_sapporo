@@ -19,6 +19,8 @@ public class MediaManipulation {
 
         dir = new File(Environment.getExternalStorageDirectory(), "BocciMedia");    //保存ディレクトリの指定
         if(dir.exists() == false) dir.mkdir();  //保存ディレクトリがない場合作成
+
+
     }
 
     public void recordingStart() {
