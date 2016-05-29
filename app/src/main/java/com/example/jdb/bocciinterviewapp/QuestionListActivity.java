@@ -240,7 +240,7 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         intent.putExtra("question",q.getQuestion());
         intent.putExtra("answer",q.getAnswer());
         startActivity(intent);
-        finish();
+        onStop();
     }
 
     private void deleteCheck(){
