@@ -161,6 +161,7 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void speechText(String speechStr) {
+        System.out.println(speechStr);
         if (speechStr.length() > 0) {
             if (tts.isSpeaking()) {
                 tts.stop();

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jdb.bocciinterviewapp.db.InterviewQuestion;
@@ -26,23 +27,24 @@ public class QuestionEditActivity extends Activity {
         id=intent.getIntExtra("id",-1);
         String question=intent.getStringExtra("question");
         String answer=intent.getStringExtra("answer");
+        if(answer==null)answer="";
         questionEdit=(EditText)findViewById(R.id.questionEdit);
         answerEdit=(EditText)findViewById(R.id.answerEdit);
         System.out.println(id);
         if(id<0){
-            System.out.println("TRUEやろ？？");
             newFlag=true;
         }else{
-            System.out.println("FALSEすか？");
-            questionEdit.setText(question);
-            answerEdit.setText(answer);
+            System.out.println(question);
+            System.out.println(answer);
+            questionEdit.setText(question, TextView.BufferType.NORMAL);
+            answerEdit.setText(answer, TextView.BufferType.NORMAL);
         }
     }
 
     public void savedEditor(View v){
         Realm realm=Realm.getInstance(this);
-        realm.beginTransaction();
         if(newFlag){
+            realm.beginTransaction();
             Number maxId=realm.where(InterviewQuestion.class).max("id");
             int nextId=1;
             if(maxId!=null)nextId+=maxId.intValue();
@@ -50,6 +52,7 @@ public class QuestionEditActivity extends Activity {
             insertQ.setId(nextId);
             insertQ.setQuestion(questionEdit.getText().toString());
             insertQ.setAnswer(answerEdit.getText().toString());
+            realm.commitTransaction();
         }else{
             RealmResults<InterviewQuestion> rs=realm.where(InterviewQuestion.class).equalTo("id",id).findAll();
             InterviewQuestion q=rs.first();
@@ -58,7 +61,6 @@ public class QuestionEditActivity extends Activity {
             q.setAnswer(answerEdit.getText().toString());
             realm.commitTransaction();
         }
-        realm.commitTransaction();
         Toast.makeText(this,"保存しました。",Toast.LENGTH_SHORT).show();
         finish();
     }
