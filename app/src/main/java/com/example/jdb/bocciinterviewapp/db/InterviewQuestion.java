@@ -1,14 +1,12 @@
 package com.example.jdb.bocciinterviewapp.db;
 
-import java.io.Serializable;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by jDB on 16/05/28.
  */
-public class InterviewQuestion extends RealmObject implements Serializable{
+public class InterviewQuestion extends RealmObject{
     @PrimaryKey
     private int id;
     private String question;

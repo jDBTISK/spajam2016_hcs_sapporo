@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Objects;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
@@ -42,6 +43,9 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_list);
+        RealmConfiguration realmConfig = new RealmConfiguration.Builder(this).build();
+        Realm.deleteRealm(realmConfig);
+        realm = Realm.getInstance(realmConfig);
         realm=Realm.getInstance(this);
         questionArray = new ArrayList<InterviewQuestion>();
         setQuestionArray();
@@ -114,10 +118,11 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         RealmResults<InterviewQuestion> rs=query.findAll();
         for(int i=0; i<rs.size(); i++){
             InterviewQuestion q=rs.get(i);
+            questionArray.add(q);
         }
         //TODO ↑あってるかな？
 
-        InterviewQuestion q1=new InterviewQuestion();
+        /*InterviewQuestion q1=new InterviewQuestion();
         q1.setId(1);
         q1.setQuestion("まず、自己紹介をしてください。");
         questionArray.add(q1);
@@ -128,7 +133,7 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         InterviewQuestion q3=new InterviewQuestion();
         q1.setId(3);
         q1.setQuestion("では、あなたの長所を教えて下さい。");
-        questionArray.add(q3);
+        questionArray.add(q3);*/
     }
 
     @Override
@@ -136,7 +141,6 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         //TODO 再生
         speechText(questionArray.get(pos).getQuestion());
     }
-
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View v, int pos, long id) {
@@ -243,7 +247,11 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         int id=questionArray.get(currentPosition).getId();
         RealmResults<InterviewQuestion> rs=realm.where(InterviewQuestion.class).equalTo("id",id).findAll();
         Intent intent=new Intent(this,QuestionEditActivity.class);
-        intent.putExtra("q",rs.first());
+        System.out.println(rs.first().getId()+rs.first().getQuestion());
+        InterviewQuestion q=rs.first();
+        intent.putExtra("id",q.getId());
+        intent.putExtra("question",q.getQuestion());
+        intent.putExtra("answer",q.getAnswer());
         startActivity(intent);
     }
 
