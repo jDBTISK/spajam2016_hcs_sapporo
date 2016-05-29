@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Player extends Activity implements View.OnClickListener {
     int i = 0;
-
+    TextView title;
     Button saiseiStart, saiseiStop;
     MediaManipulation mm = new MediaManipulation();
     String pass;
@@ -18,6 +19,8 @@ public class Player extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
         Intent intent=getIntent();
+        title=(TextView)findViewById(R.id.textView3);
+        title.setText(pass);
         pass=intent.getStringExtra("pass");
         saiseiStart = (Button) findViewById(R.id.button5);
         saiseiStop = (Button) findViewById(R.id.button6);
