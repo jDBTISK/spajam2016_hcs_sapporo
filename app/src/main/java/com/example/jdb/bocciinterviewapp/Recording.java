@@ -40,8 +40,8 @@ public class Recording extends Activity implements View.OnClickListener {
         recordingStart = (Button) findViewById(R.id.recordingstart);
         recordingStop = (Button) findViewById(R.id.recordingstop);
         Intent intent=getIntent();
-        String situmon ="situmon";
-        list=intent.getStringArrayListExtra(situmon);
+
+        list=intent.getStringArrayListExtra("situmon");
         textView=(TextView)findViewById(R.id.textView11);
 
         textView.setText(list.get(i));

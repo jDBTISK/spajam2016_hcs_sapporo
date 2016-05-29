@@ -11,9 +11,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.Realm;
-
-public class PlayList extends Activity {
+public class PlayList2 extends Activity {
     private List<String> questionList = new ArrayList<String>();
     private ListView lv;
     ArrayList<String> list1, list2,interview;
@@ -21,8 +19,10 @@ public class PlayList extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_list);
-        final PlayListOperation plo = new PlayListOperation(Realm.getInstance(this));
-        ArrayList<String> nameList = plo.getNameList();
+        //final PlayListOperation plo = new PlayListOperation(Realm.getInstance(this));
+        ArrayList<String> nameList = new ArrayList<>();
+        nameList.add(0,"PlayList1");
+        nameList.add(1,"PlayList2");
         ArrayList<String> list1=new ArrayList<>();
         ArrayList<String> list2=new ArrayList<>();
 
@@ -32,8 +32,9 @@ public class PlayList extends Activity {
 
         list2.add(0,"あなたを家電製品に例えると何ですか？その理由は？");
         list2.add(1,"ザリガニとエビの違いを１０個あげて下さい");
-        lv = (ListView) findViewById(R.id.listView);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, nameList);
+        lv = (ListView) findViewById(R.id.listView2);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, nameList);
+
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -43,7 +44,7 @@ public class PlayList extends Activity {
                 interview=sentaku(item);
                 Intent intent=new Intent(getApplicationContext(),Recording.class);
                 intent.putExtra("pass",item);
-                intent.putExtra("situmon",interview);
+                intent.putStringArrayListExtra("situmon",interview);
                 startActivity(intent);
             }
         });
