@@ -12,7 +12,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/questionList"/>
+        android:id="@+id/questionList" />
 
     <Button
         android:layout_width="wrap_content"
@@ -20,7 +20,5 @@
         android:text="追加"
         android:onClick="addQuestionItem"
         android:id="@+id/addQuestionButton"
-        android:layout_alignBottom="@+id/questionList"
-        android:layout_toRightOf="@+id/editButton"
-        android:layout_toEndOf="@+id/editButton" />
+        android:layout_alignBottom="@+id/questionList" />
 </RelativeLayout>

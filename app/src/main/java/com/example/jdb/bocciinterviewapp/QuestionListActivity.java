@@ -113,32 +113,16 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     }
 
     private void setQuestionArray() {
-        //TODO データベースから質問引っ張ってきて
         RealmQuery<InterviewQuestion> query=realm.where(InterviewQuestion.class);
         RealmResults<InterviewQuestion> rs=query.findAll();
         for(int i=0; i<rs.size(); i++){
             InterviewQuestion q=rs.get(i);
             questionArray.add(q);
         }
-        //TODO ↑あってるかな？
-
-        /*InterviewQuestion q1=new InterviewQuestion();
-        q1.setId(1);
-        q1.setQuestion("まず、自己紹介をしてください。");
-        questionArray.add(q1);
-        InterviewQuestion q2=new InterviewQuestion();
-        q1.setId(2);
-        q1.setQuestion("では、あなたが弊社を志望した理由を教えて下さい。");
-        questionArray.add(q2);
-        InterviewQuestion q3=new InterviewQuestion();
-        q1.setId(3);
-        q1.setQuestion("では、あなたの長所を教えて下さい。");
-        questionArray.add(q3);*/
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
-        //TODO 再生
         speechText(questionArray.get(pos).getQuestion());
     }
 
@@ -234,8 +218,8 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
             @Override
             public void onClick(DialogInterface dialog,int idx){
                 if(idx==0){
-                    //TODO 編集
                     startEditActivity();
+                    onDestroy();
                 }else if(idx==1){
                     deleteCheck();
                 }
@@ -248,7 +232,6 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         int id=questionArray.get(currentPosition).getId();
         RealmResults<InterviewQuestion> rs=realm.where(InterviewQuestion.class).equalTo("id",id).findAll();
         Intent intent=new Intent(this,QuestionEditActivity.class);
-        System.out.println(rs.first().getId()+rs.first().getQuestion());
         InterviewQuestion q=rs.first();
         intent.putExtra("id",q.getId());
         intent.putExtra("question",q.getQuestion());
