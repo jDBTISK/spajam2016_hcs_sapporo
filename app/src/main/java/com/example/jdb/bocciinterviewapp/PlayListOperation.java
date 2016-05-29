@@ -19,6 +19,42 @@ public class PlayListOperation {
 //        Realm.deleteRealm(realmConfig);
 //        realm = Realm.getInstance(realmConfig);
         this.realm = realm;
+        Number id = realm.where(PlayList.class).max("id");
+        if(id == null) {
+            RealmResults<InterviewQuestion> results = realm.where(InterviewQuestion.class).lessThan("id", 3).findAll();
+            realm.beginTransaction();
+            InterviewQuestion inputInterview = null;
+            for(int i = 0; i < results.size(); i++) {
+                inputInterview = realm.createObject(InterviewQuestion.class);
+                inputInterview.setId(results.get(i).getId());
+                inputInterview.setQuestion(results.get(i).getQuestion());
+                inputInterview.setAnswer(results.get(i).getAnswer());
+            }
+            realm.commitTransaction();
+            realm.beginTransaction();
+            PlayList playList = realm.createObject(PlayList.class);
+            playList.setId(1);
+            playList.setName("PlayList1");
+            playList.setInterviewQuestion(inputInterview);
+            realm.commitTransaction();
+
+            results = realm.where(InterviewQuestion.class).greaterThan("id", 5).findAll();
+            realm.beginTransaction();
+            inputInterview = null;
+            for(int i = 0; i < results.size(); i++) {
+                inputInterview = realm.createObject(InterviewQuestion.class);
+                inputInterview.setId(results.get(i).getId());
+                inputInterview.setQuestion(results.get(i).getQuestion());
+                inputInterview.setAnswer(results.get(i).getAnswer());
+            }
+            realm.commitTransaction();
+            realm.beginTransaction();
+            playList = realm.createObject(PlayList.class);
+            playList.setId(2);
+            playList.setName("PlayList2");
+            playList.setInterviewQuestion(inputInterview);
+            realm.commitTransaction();
+        }
     }
 
     public int getMaxId() {
@@ -27,6 +63,13 @@ public class PlayListOperation {
         if(maxId != null) nextId = maxId.intValue() + 1;
         return nextId;
     }
+
+//    public InterviewQuestion getInterviewQuestion(int id) {
+//        InterviewQuestion interviewQuestion;
+//
+//        return interviewQuestion;
+//    }
+
     public void addItemList(int id, String question, String answer) {
         realm.beginTransaction();
         InterviewQuestion interviewQuestion = realm.createObject(InterviewQuestion.class);
@@ -49,14 +92,22 @@ public class PlayListOperation {
         return nextId;
     }
 
-    public InterviewQuestion getPlayListItem(int id) {
-        RealmResults<PlayList> results = realm.where(PlayList.class).equalTo("id", id).findAll();
+    public ArrayList<String[]> getPlayListItem(String name) {
+        RealmResults<PlayList> results = realm.where(PlayList.class).equalTo("name", name).findAll();
         InterviewQuestion interviewQuestion = null;
+        ArrayList<String[]> array = null;
         if(results.size() > 0) {
             interviewQuestion = results.get(0).getInterviewQuestion();
+            RealmResults<InterviewQuestion> results1 = realm.where(InterviewQuestion.class).findAll();
+            array = new ArrayList<String[]>();
+            String[] qAndA = new String[2];
+            for(int i = 0; i < results1.size(); i++) {
+                qAndA[0] = results1.get(i).getQuestion();
+                qAndA[1] = results1.get(i).getAnswer();
+                array.add(qAndA);
+            }
         }
-
-        return interviewQuestion;
+        return array;
     }
 
     public ArrayList<String> getNameList() {
