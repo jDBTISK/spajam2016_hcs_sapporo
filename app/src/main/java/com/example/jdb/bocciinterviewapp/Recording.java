@@ -34,13 +34,11 @@ public class Recording extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_recording);
         recordingStart = (Button) findViewById(R.id.recordingstart);
         recordingStop = (Button) findViewById(R.id.recordingstop);
-        saiseiStart = (Button) findViewById(R.id.button2);
-        saiseiStop = (Button) findViewById(R.id.button3);
+
 
         recordingStart.setOnClickListener(this);
         recordingStop.setOnClickListener(this);
-        saiseiStart.setOnClickListener(this);
-        saiseiStop.setOnClickListener(this);
+
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.

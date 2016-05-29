@@ -22,6 +22,7 @@ public class Player extends Activity implements View.OnClickListener {
         title=(TextView)findViewById(R.id.textView3);
         title.setText(pass);
         pass=intent.getStringExtra("pass");
+        title.setText(pass);
         saiseiStart = (Button) findViewById(R.id.button5);
         saiseiStop = (Button) findViewById(R.id.button6);
 
