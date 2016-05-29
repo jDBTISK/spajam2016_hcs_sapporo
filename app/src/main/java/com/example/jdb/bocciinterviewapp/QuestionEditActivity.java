@@ -28,9 +28,12 @@ public class QuestionEditActivity extends Activity {
         String answer=intent.getStringExtra("answer");
         questionEdit=(EditText)findViewById(R.id.questionEdit);
         answerEdit=(EditText)findViewById(R.id.answerEdit);
-        if(id>=0){
+        System.out.println(id);
+        if(id<0){
+            System.out.println("TRUEやろ？？");
             newFlag=true;
         }else{
+            System.out.println("FALSEすか？");
             questionEdit.setText(question);
             answerEdit.setText(answer);
         }

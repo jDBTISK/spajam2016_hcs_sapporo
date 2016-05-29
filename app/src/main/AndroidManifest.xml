@@ -23,6 +23,7 @@
         <activity android:name=".Gesture" />
         <activity android:name=".Question_and_answer" />
         <activity android:name=".QuestionListActivity" />
+        <activity android:name=".QuestionEditActivity"/>
         <activity android:name=".TextRegistration" />
         <activity android:name=".Voice_reproducing" />
         <activity android:name=".Player" />
