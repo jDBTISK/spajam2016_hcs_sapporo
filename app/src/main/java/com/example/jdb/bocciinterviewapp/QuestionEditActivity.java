@@ -62,7 +62,7 @@ public class QuestionEditActivity extends Activity {
             realm.commitTransaction();
         }
         Toast.makeText(this,"保存しました。",Toast.LENGTH_SHORT).show();
-        Intent intent=new Intent(this,QuestionListActivity.class);
+        Intent intent=new Intent(this,Question_and_answer.class);
         startActivity(intent);
         finish();
     }
