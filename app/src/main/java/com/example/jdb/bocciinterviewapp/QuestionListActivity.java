@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Objects;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
@@ -43,9 +42,6 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_list);
-        RealmConfiguration realmConfig = new RealmConfiguration.Builder(this).build();
-        Realm.deleteRealm(realmConfig);
-        realm = Realm.getInstance(realmConfig);
         realm=Realm.getInstance(this);
         questionArray = new ArrayList<InterviewQuestion>();
         setQuestionArray();
