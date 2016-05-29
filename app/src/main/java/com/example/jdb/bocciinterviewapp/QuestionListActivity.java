@@ -29,7 +29,7 @@ import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
-public class QuestionListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener,TextToSpeech.OnInitListener {
+public class QuestionListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,TextToSpeech.OnInitListener {
 
     private ArrayList<InterviewQuestion> questionArray;
     private BaseAdapter adapter;
@@ -54,7 +54,7 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         adapter = new ListViewAdapter(this, R.layout.question_item, questionArray);
         questionList.setAdapter(adapter);
         questionList.setOnItemClickListener(this);
-        questionList.setOnItemLongClickListener(this);
+        //questionList.setOnItemLongClickListener(this);
     }
 
     public void addQuestionItem(View v) {
@@ -123,15 +123,17 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
-        speechText(questionArray.get(pos).getQuestion());
+        //speechText(questionArray.get(pos).getQuestion());
+        currentPosition = pos;
+        alertCheck(questionArray.get(pos).getQuestion());
     }
 
-    @Override
+    /*@Override
     public boolean onItemLongClick(AdapterView<?> parent, View v, int pos, long id) {
         currentPosition = pos;
         alertCheck(questionArray.get(pos).getQuestion());
         return false;
-    }
+    }*/
 
     @Override
     public void onInit(int status) {
@@ -212,16 +214,17 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
     }
 
     private void alertCheck(String item){
-        String[] menu={"編集","削除"};
+        String[] menu={"編集","削除","再生"};
         AlertDialog.Builder alert=new AlertDialog.Builder(this);
         alert.setItems(menu,new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog,int idx){
                 if(idx==0){
                     startEditActivity();
-                    onDestroy();
                 }else if(idx==1){
                     deleteCheck();
+                }else if(idx==2){
+                    speechText(questionArray.get(currentPosition).getQuestion());
                 }
             }
         });
@@ -237,6 +240,7 @@ public class QuestionListActivity extends AppCompatActivity implements AdapterVi
         intent.putExtra("question",q.getQuestion());
         intent.putExtra("answer",q.getAnswer());
         startActivity(intent);
+        finish();
     }
 
     private void deleteCheck(){
